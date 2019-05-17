@@ -15,7 +15,7 @@ function sendRefrence(){
       if (element == null){
         break
       }
-      var inhance = document.getElementById("A1_"+i+"_0").innerText
+      var inhance = document.getElementById("A1_"+i+"_12").innerText
       if (inhance[inhance.length] == " "){
         inhance[inhance.length] = ""
       }
