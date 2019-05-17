@@ -33,3 +33,23 @@ function getData (data){
     dataValue.push(arrayInside)
   }
 }
+ function sendRefrence(){
+    var element = document.getElementById("A1_")
+    for (var i = 0; i < 600 ; i++) {
+      element = document.getElementById("A1_"+i)
+      if (element == null){
+        break
+      }
+      firebase.database().ref("refrences/" + document.getElementById("A1_"+i+"_0").innerText).set({
+        price3:35000,
+        price6:3000,
+        price9:3000,
+        price10:3000,
+        price12:3000,
+        price13:3000,
+        price18:3000,
+        price24:3000,
+        price30:3000,
+      })
+   }
+   sendRefrence()
