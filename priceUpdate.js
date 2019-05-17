@@ -16,7 +16,7 @@ function sendRefrence(){
       if (element == null){
         break
       }
-      firebase.database().ref("refrences/" + document.getElementById("A1_"+i+"_0").innerText).set({
+      firebase.database().ref("refrences/" + document.getElementById("A1_"+i+"_12").innerText).set({
         price3:35000,
         price6:3000,
         price9:3000,
