@@ -16,11 +16,9 @@ function sendRefrence(){
       if (element == null){
         break
       }
-      var inhance = document.getElementById("A1_"+i+"_12").innerHTML
-      inhance1 = inhance.replace('<br>',"")
-      inhance2 = inhance1.replace('<span>',"")
-      inhance3 = inhance2.replace('</span>',"")
+      var inhance = document.getElementById("A1_"+i+"_10").innerHTML
       firebase.database().ref("refrences/" + inhance3).set({
+        refrence:document.getElementById("A1_"+i+"_0").innerHTML,
         price3:35000,
         price6:3000,
         price9:3000,
