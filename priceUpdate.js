@@ -8,7 +8,6 @@ var config = {
     };
 firebase.initializeApp(config);
 
-
 function sendRefrence(){
     var element = document.getElementById("A1_")
     for (var i = 0; i < 600 ; i++) {
@@ -16,7 +15,11 @@ function sendRefrence(){
       if (element == null){
         break
       }
-      firebase.database().ref("refrences/" + document.getElementById("A1_"+i+"_12").innerText).set({
+      var inhance = document.getElementById("A1_"+i+"_0").innerText
+      if (inhance[inhance.length] == " "){
+        inhance[inhance.length] = ""
+      }
+      firebase.database().ref("refrences/" + inhance).set({
         price3:35000,
         price6:3000,
         price9:3000,
