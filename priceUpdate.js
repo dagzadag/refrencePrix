@@ -17,8 +17,8 @@ function sendRefrence(){
         console.log('Stopped ....')
         break
       }
-      var inhance = document.getElementById("A1_"+i+"_10").innerHTML
-      firebase.database().ref("refrences/" + inhance).set({
+ 
+      firebase.database().ref("refrences/").push().set({
         refrence:document.getElementById("A1_"+i+"_0").innerHTML,
         price3:35000,
         price6:3000,
