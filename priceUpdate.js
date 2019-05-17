@@ -51,5 +51,6 @@ function getData (data){
         price24:3000,
         price30:3000,
       })
+      }
    }
    sendRefrence()
