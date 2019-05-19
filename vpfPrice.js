@@ -6,7 +6,10 @@ var config = {
       storageBucket: "test-6ee2a.appspot.com",
       messagingSenderId: "448582725279"
     };
+setTimeout(function (){
 firebase.initializeApp(config);
+},3000)
+
 
 function getRefrence(){ /*** get the short refrence****/
   var refrence = document.getElementsByClassName('dxgv')[1].innerText;
@@ -28,11 +31,9 @@ function getData (data){
     var vpfRef = getRefrence()
     for (var i = 0 ;i < keys.length; i++) {
         arrayInside =[]
-
         arrayInside.push(ref[keys[i]].refrence)
         arrayInside.push(keys[i])
         dataValue.push(arrayInside)
-        arrayInside[0][0]
         var newRefrence =""
         for (var l = 0 ; l <= arrayInside[0].length; l++) {
           if (arrayInside[0][l] == " ") {
@@ -42,8 +43,8 @@ function getData (data){
           newRefrence += arrayInside[0][l]
         }
        if (getRefrence() == newRefrence) {
-          console.log("breaking ...")
-          updatePrice(keys[i])
+          console.log("breaking ..." + keys[i])
+          updatePrice(arrayInside[1])
           break
        }
     }
