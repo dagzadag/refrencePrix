@@ -74,7 +74,7 @@ var globalRefrence =""
     setTimeout(function (argument) {
       // body...
       prices = {
-        refrence:,
+        refrence:globalRefrence,
         price3: three.responseJSON.TotalRembourser,
         price6: three.responseJSON.TotalRembourser,
         price9: nine.responseJSON.TotalRembourser,
