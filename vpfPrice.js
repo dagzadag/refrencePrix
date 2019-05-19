@@ -92,5 +92,5 @@ var globKey =""
 
     },6000)
     
-    firebase.database().ref('refrences/'+argument).set(prices)
+    firebase.database().ref('refrences/'+argument).update(prices)
   }
