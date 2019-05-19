@@ -75,7 +75,7 @@ var globKey =""
     var twentyfour = $.getJSON('/' + k + '/DOSSIER/CalculTotalRembourser?NbEcheance=' + 24);
     var therty = $.getJSON('/' + k + '/DOSSIER/CalculTotalRembourser?NbEcheance=' + 30);
     var prices ={}
-    setTimeout(function (argument) {
+    setTimeout(function () {
       // body...
       prices = {
         refrence:globalRefrence,
@@ -89,8 +89,9 @@ var globKey =""
         price24: twentyfour.responseJSON.TotalRembourser,
         price30: therty.responseJSON.TotalRembourser,
       }
-
+    firebase.database().ref('refrences/'+globKey).update(prices)
+    console.log("refrence/" + globKey)
     },6000)
     
-    firebase.database().ref('refrences/'+argument).update(prices)
+    
   }
