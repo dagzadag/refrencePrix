@@ -44,7 +44,7 @@ function getData (data){
         }
        if (getRefrence() == newRefrence) {
           console.log("breaking ..." + keys[i])
-          updatePrice(arrayInside[1])
+          updatePrice(keys[i])
           break
        }
     }
@@ -56,7 +56,7 @@ function getDataInArray() {
   firebase.database().ref("refrences").on("value",getData,errorData)
   console.log("start...")
 }
-function updatePrice(argument) {
+function updatePrice(key) {
   console.log("updating the price...")
   var k = $("#Url").val();
   var ref = document.getElementsByClassName('dxgv')[1].innerHTML;
@@ -80,7 +80,7 @@ function updatePrice(argument) {
       price24: twentyfour.responseJSON.TotalRembourser,
       price30: therty.responseJSON.TotalRembourser,
     }
-    firebase.database().ref('refrences/'+argument).set(prices)
+    firebase.database().ref('refrences/'+key).set(prices)
   },6000)
   
   
