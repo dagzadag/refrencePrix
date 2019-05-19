@@ -10,81 +10,83 @@ setTimeout(function (){
 firebase.initializeApp(config);
 },3000)
 
-
-function getRefrence(){ /*** get the short refrence****/
-  var refrence = document.getElementsByClassName('dxgv')[1].innerText;
-  var newRefrence =""
-  for (var i = 0 ; i <= refrence.length; i++) {
-    if (refrence[i] == " ") {
-      break
+var globalRefrence =""
+  function getRefrence(){ /*** get the short refrence****/
+    var refrence = document.getElementsByClassName('dxgv')[1].innerText;
+    var newRefrence =""
+    for (var i = 0 ; i <= refrence.length; i++) {
+      if (refrence[i] == " ") {
+        break
+      }
+      newRefrence += refrence[i]
     }
-    newRefrence += refrence[i]
+    return newRefrence
   }
-  return newRefrence
-}
-var dataValue = []
-var arrayInside =[]
-function getData (data){
-    console.log("geting the data...")  
-    dataValue = []
-    var ref = data.val()
-    var keys = Object.keys(ref)
-    var vpfRef = getRefrence()
-    for (var i = 0 ;i < keys.length; i++) {
-        arrayInside =[]
+  var dataValue = []
+  function getData (data){
+      console.log("geting the data...")  
+      dataValue = []
+      var ref = data.val()
+      var keys = Object.keys(ref)
+      var vpfRef = getRefrence()
+      for (var i = 0 ;i < keys.length; i++) {
+          arrayInside =[]
 
-        arrayInside.push(ref[keys[i]].refrence)
-        arrayInside.push(keys[i])
-        dataValue.push(arrayInside)
-        arrayInside[0][0]
-        var newRefrence =""
-        for (var l = 0 ; l <= arrayInside[0].length; l++) {
-          if (arrayInside[0][l] == " ") {
-            break
+          arrayInside.push(ref[keys[i]].refrence)
+          arrayInside.push(keys[i])
+          dataValue.push(arrayInside)
+          arrayInside[0][0]
+          var newRefrence =""
+          for (var l = 0 ; l <= arrayInside[0].length; l++) {
+            if (arrayInside[0][l] == " ") {
+              globalRefrence = ref[keys[i]].refrence
+              break
+            }
+            
+            newRefrence += arrayInside[0][l]
           }
+         if (vpfRef == newRefrence) {
+            console.log("breaking ..." + keys[i])
+            updatePrice(keys[i])
+            break
+         }
+      }
+  }
+  function errorData(err) {
+      console.log('Error!' + err)
+  }
+  function getDataInArray() {
+    firebase.database().ref("refrences").on("value",getData,errorData)
+    console.log("start...")
+  }
+  function updatePrice(argument) {
+    console.log("updating the price...")
+    var k = $("#Url").val();
+    var ref = document.getElementsByClassName('dxgv')[1].innerHTML;
+    // Get a reference to the database service
+    var three = $.getJSON('/' + k + '/DOSSIER/CalculTotalRembourser?NbEcheance=' + 3);
+    var nine = $.getJSON('/' + k + '/DOSSIER/CalculTotalRembourser?NbEcheance=' + 9);
+    var ten = $.getJSON('/' + k + '/DOSSIER/CalculTotalRembourser?NbEcheance=' + 10);
+    var twelev = $.getJSON('/' + k + '/DOSSIER/CalculTotalRembourser?NbEcheance=' + 12);
+    var eighteen = $.getJSON('/' + k + '/DOSSIER/CalculTotalRembourser?NbEcheance=' + 18);
+    var twentyfour = $.getJSON('/' + k + '/DOSSIER/CalculTotalRembourser?NbEcheance=' + 24);
+    var therty = $.getJSON('/' + k + '/DOSSIER/CalculTotalRembourser?NbEcheance=' + 30);
+    setTimeout(function (argument) {
+      // body...
+      prices = {
+        refrence:,
+        price3: three.responseJSON.TotalRembourser,
+        price6: three.responseJSON.TotalRembourser,
+        price9: nine.responseJSON.TotalRembourser,
+        price10: ten.responseJSON.TotalRembourser,
+        price12: twelev.responseJSON.TotalRembourser,
+        price13: twelev.responseJSON.TotalRembourser,
+        price18: eighteen.responseJSON.TotalRembourser,
+        price24: twentyfour.responseJSON.TotalRembourser,
+        price30: therty.responseJSON.TotalRembourser,
+      }
 
-          newRefrence += arrayInside[0][l]
-        }
-       if (vpfRef == newRefrence) {
-          console.log("breaking ..." + keys[i])
-          updatePrice(keys[i])
-          break
-       }
-    }
-}
-function errorData(err) {
-    console.log('Error!' + err)
-}
-function getDataInArray() {
-  firebase.database().ref("refrences").on("value",getData,errorData)
-  console.log("start...")
-}
-function updatePrice(key) {
-  console.log("updating the price...")
-  var k = $("#Url").val();
-  var ref = document.getElementsByClassName('dxgv')[1].innerHTML;
-  // Get a reference to the database service
-  var prices ={}
-  var three = $.getJSON('/' + k + '/DOSSIER/CalculTotalRembourser?NbEcheance=' + 3);
-  var nine = $.getJSON('/' + k + '/DOSSIER/CalculTotalRembourser?NbEcheance=' + 9);
-  var ten = $.getJSON('/' + k + '/DOSSIER/CalculTotalRembourser?NbEcheance=' + 10);
-  var twelev = $.getJSON('/' + k + '/DOSSIER/CalculTotalRembourser?NbEcheance=' + 12);
-  var eighteen = $.getJSON('/' + k + '/DOSSIER/CalculTotalRembourser?NbEcheance=' + 18);
-  var twentyfour = $.getJSON('/' + k + '/DOSSIER/CalculTotalRembourser?NbEcheance=' + 24);
-  var therty = $.getJSON('/' + k + '/DOSSIER/CalculTotalRembourser?NbEcheance=' + 30);
-  setTimeout(function (argument) {
-    // body...
-    prices = {
-      price3: three.responseJSON.TotalRembourser,
-      price9: nine.responseJSON.TotalRembourser,
-      price10: ten.responseJSON.TotalRembourser,
-      price12: twelev.responseJSON.TotalRembourser,
-      price18: eighteen.responseJSON.TotalRembourser,
-      price24: twentyfour.responseJSON.TotalRembourser,
-      price30: therty.responseJSON.TotalRembourser,
-    }
-    firebase.database().ref('refrences/'+key).set(prices)
-  },6000)
-  
-  
-}
+    },6000)
+    
+    firebase.database().ref('refrences/'+argument).set(prices)
+  }
