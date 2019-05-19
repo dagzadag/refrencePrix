@@ -83,7 +83,6 @@ function updatePrice(key) {
       price24: twentyfour.responseJSON.TotalRembourser,
       price30: therty.responseJSON.TotalRembourser,
     }
-    console.Log('refrences/'+key)
     firebase.database().ref('refrences/'+key).set(prices)
   },6000)
   
