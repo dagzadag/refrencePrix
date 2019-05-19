@@ -42,7 +42,7 @@ var globKey =""
           for (var l = 0 ; l <= arrayInside[0].length; l++) {
             if (arrayInside[0][l] == " ") {
               globalRefrence = ref[keys[i]].refrence
-              globKey = key[i]
+              globKey = keys[i]
               break
             }
             
