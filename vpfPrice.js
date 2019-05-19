@@ -11,6 +11,8 @@ firebase.initializeApp(config);
 },3000)
 
 var globalRefrence =""
+var globKey =""
+
   function getRefrence(){ /*** get the short refrence****/
     var refrence = document.getElementsByClassName('dxgv')[1].innerText;
     var newRefrence =""
@@ -40,6 +42,7 @@ var globalRefrence =""
           for (var l = 0 ; l <= arrayInside[0].length; l++) {
             if (arrayInside[0][l] == " ") {
               globalRefrence = ref[keys[i]].refrence
+              globKey = key[i]
               break
             }
             
@@ -47,7 +50,7 @@ var globalRefrence =""
           }
          if (vpfRef == newRefrence) {
             console.log("breaking ..." + keys[i])
-            updatePrice(keys[i])
+            updatePrice(globKey)
             break
          }
       }
