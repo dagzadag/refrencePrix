@@ -23,6 +23,7 @@ function getRefrence(){ /*** get the short refrence****/
   return newRefrence
 }
 var dataValue = []
+var arrayInside =[]
 function getData (data){
     console.log("geting the data...")  
     dataValue = []
@@ -44,7 +45,7 @@ function getData (data){
 
           newRefrence += arrayInside[0][l]
         }
-       if (getRefrence() == newRefrence) {
+       if (vpfRef == newRefrence) {
           console.log("breaking ..." + keys[i])
           updatePrice(keys[i])
           break
