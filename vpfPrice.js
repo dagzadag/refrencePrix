@@ -31,15 +31,17 @@ function getData (data){
     var vpfRef = getRefrence()
     for (var i = 0 ;i < keys.length; i++) {
         arrayInside =[]
+
         arrayInside.push(ref[keys[i]].refrence)
         arrayInside.push(keys[i])
         dataValue.push(arrayInside)
+        arrayInside[0][0]
         var newRefrence =""
         for (var l = 0 ; l <= arrayInside[0].length; l++) {
           if (arrayInside[0][l] == " ") {
             break
           }
-          
+
           newRefrence += arrayInside[0][l]
         }
        if (getRefrence() == newRefrence) {
@@ -80,6 +82,7 @@ function updatePrice(key) {
       price24: twentyfour.responseJSON.TotalRembourser,
       price30: therty.responseJSON.TotalRembourser,
     }
+    console.Log('refrences/'+key)
     firebase.database().ref('refrences/'+key).set(prices)
   },6000)
   
