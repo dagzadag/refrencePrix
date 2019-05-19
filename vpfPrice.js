@@ -71,6 +71,7 @@ var globalRefrence =""
     var eighteen = $.getJSON('/' + k + '/DOSSIER/CalculTotalRembourser?NbEcheance=' + 18);
     var twentyfour = $.getJSON('/' + k + '/DOSSIER/CalculTotalRembourser?NbEcheance=' + 24);
     var therty = $.getJSON('/' + k + '/DOSSIER/CalculTotalRembourser?NbEcheance=' + 30);
+    var prices ={}
     setTimeout(function (argument) {
       // body...
       prices = {
