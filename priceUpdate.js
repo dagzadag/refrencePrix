@@ -33,7 +33,3 @@ function sendRefrence(){
       }
    }
 
-setTimeout(function () {
-  console.log('Started....')
-  sendRefrence()
-},8000)
