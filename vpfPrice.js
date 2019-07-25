@@ -7,9 +7,9 @@ var config = {
       messagingSenderId: "448582725279"
     };
 setTimeout(function (){
+document.getElementsByClassName('widget-header')[1].innerHTML += '<a onclick="updatePrice()">hello</a>'
 firebase.initializeApp(config);
 },3000)
-document.getElementsByClassName('widget-header')[1].innerHTML += '<a onclick="updatePrice()">hello</a>'
 var globalRefrence =""
 var globKey =""
 
