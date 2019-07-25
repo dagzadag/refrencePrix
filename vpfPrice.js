@@ -9,7 +9,7 @@ var config = {
 setTimeout(function (){
 firebase.initializeApp(config);
 },3000)
-
+document.getElementsByClassName('widget-header')[1].innerHTML += '<a onclick="updatePrice()">hello</a>'
 var globalRefrence =""
 var globKey =""
 
