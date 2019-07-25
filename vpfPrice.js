@@ -22,47 +22,10 @@ var globKey =""
       }
       newRefrence += refrence[i]
     }
-    return newRefrence
+    return newRefrence + " : " + document.getElementsByClassName('dxgv')[2].innerText
   }
-  var dataValue = []
-  function getData (data){
-      console.log("geting the data...")  
-      dataValue = []
-      var ref = data.val()
-      var keys = Object.keys(ref)
-      var vpfRef = getRefrence()
-      for (var i = 0 ;i < keys.length; i++) {
-          arrayInside =[]
-
-          arrayInside.push(ref[keys[i]].refrence)
-          arrayInside.push(keys[i])
-          dataValue.push(arrayInside)
-          arrayInside[0][0]
-          var newRefrence =""
-          for (var l = 0 ; l <= arrayInside[0].length; l++) {
-            if (arrayInside[0][l] == " ") {
-              globalRefrence = ref[keys[i]].refrence
-              globKey = keys[i]
-              break
-            }
-            
-            newRefrence += arrayInside[0][l]
-          }
-         if (vpfRef == newRefrence) {
-            console.log("breaking ..." + keys[i])
-            updatePrice(globKey)
-            break
-         }
-      }
-  }
-  function errorData(err) {
-      console.log('Error!' + err)
-  }
-  function getDataInArray() {
-    firebase.database().ref("refrences").on("value",getData,errorData)
-    console.log("start...")
-  }
-  function updatePrice(argument) {
+ 
+  function updatePrice() {
     console.log("updating the price...")
     var k = $("#Url").val();
     var ref = document.getElementsByClassName('dxgv')[1].innerHTML;
@@ -78,7 +41,7 @@ var globKey =""
     setTimeout(function () {
       // body...
       prices = {
-        refrence:globalRefrence,
+        refrence:getRefrence(),
         price3: three.responseJSON.TotalRembourser,
         price6: three.responseJSON.TotalRembourser,
         price9: nine.responseJSON.TotalRembourser,
@@ -89,8 +52,8 @@ var globKey =""
         price24: twentyfour.responseJSON.TotalRembourser,
         price30: therty.responseJSON.TotalRembourser,
       }
-    firebase.database().ref('refrences/'+globKey).update(prices)
-    console.log("refrence/" + globKey)
+    firebase.database().ref('refrences/').update(prices)
+    console.log("refrence/" )
     },6000)
     
     
