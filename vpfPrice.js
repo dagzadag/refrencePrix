@@ -52,7 +52,7 @@ var globKey =""
         price24: twentyfour.responseJSON.TotalRembourser,
         price30: therty.responseJSON.TotalRembourser,
       }
-    firebase.database().ref('refrences/').update(prices)
+    firebase.database().ref('refrences/').push().set(prices)
     console.log("refrence/" )
     },6000)
     
